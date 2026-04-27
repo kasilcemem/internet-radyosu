@@ -3,44 +3,139 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Radyo Plus</title>
-<link rel="stylesheet" href="style.css">
+<title>KAŞ FM</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#0f0f0f;
+    color:white;
+    text-align:center;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(90deg,#ffb300,#ff6f00);
+    padding:30px 10px;
+}
+
+/* LOGO */
+.logo{
+    width:120px;
+    height:120px;
+    margin:auto;
+    display:block;
+}
+
+/* TITLE */
+h1{
+    margin:10px 0 5px;
+    font-size:40px;
+}
+
+/* PLAYER */
+.player{
+    margin:30px auto;
+    background:#1c1c1c;
+    padding:20px;
+    border-radius:15px;
+    width:90%;
+    max-width:500px;
+    box-shadow:0 0 15px rgba(255,255,255,0.1);
+}
+
+audio{
+    width:100%;
+}
+
+/* BOX */
+.box{
+    margin:20px auto;
+    background:#1a1a1a;
+    padding:20px;
+    border-radius:15px;
+    width:90%;
+    max-width:500px;
+}
+
+/* INPUT */
+input{
+    width:70%;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+}
+
+button{
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    background:#ffb300;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#ff6f00;
+}
+
+footer{
+    margin-top:40px;
+    padding:20px;
+    background:#000;
+    font-size:14px;
+}
+</style>
 </head>
+
 <body>
 
 <header>
-    <h1>🎙️ Radyo Plus</h1>
-    <p>7/24 Kesintisiz Müzik Yayını</p>
+<!-- KAŞ LOGO (SVG) -->
+<svg class="logo" viewBox="0 0 200 200">
+<circle cx="100" cy="100" r="90" fill="#ffb300"/>
+<text x="100" y="95" text-anchor="middle" font-size="48" font-family="Arial" fill="black">KAŞ</text>
+<text x="100" y="140" text-anchor="middle" font-size="32" font-family="Arial" fill="black">FM</text>
+</svg>
+
+<h1>KAŞ FM</h1>
+<p>7/24 Kesintisiz Radyo Yayını</p>
 </header>
 
-<section class="player">
-    <h2>Canlı Yayın</h2>
-    <audio controls autoplay>
-        <source src="https://stream.zeno.fm/example" type="audio/mpeg">
-        Tarayıcınız desteklemiyor.
-    </audio>
-</section>
+<!-- CANLI YAYIN -->
+<div class="player">
+<h2>🎧 Canlı Yayın</h2>
 
-<section class="program">
-    <h2>Yayın Akışı</h2>
-    <ul>
-        <li>08:00 Sabah Keyfi</li>
-        <li>12:00 Hit Müzikler</li>
-        <li>18:00 Akşam Drive Time</li>
-        <li>22:00 Slow Night</li>
-    </ul>
-</section>
+<audio controls autoplay>
+<source src="https://stream.zeno.fm/example" type="audio/mpeg">
+Tarayıcı desteklemiyor.
+</audio>
+</div>
 
-<section class="request">
-    <h2>İstek Parça</h2>
-    <input type="text" placeholder="Şarkı isteğiniz">
-    <button onclick="sendRequest()">Gönder</button>
-</section>
+<!-- İSTEK -->
+<div class="box">
+<h2>🎶 Şarkı İste</h2>
+<input type="text" id="song" placeholder="Şarkı adı yaz">
+<button onclick="istek()">Gönder</button>
+<p id="msg"></p>
+</div>
 
 <footer>
-    <p>© 2026 Radyo Plus</p>
+© 2026 KAŞ FM | Tüm Hakları Saklıdır
 </footer>
 
-<script src="script.js"></script>
+<script>
+function istek(){
+    let s = document.getElementById("song").value;
+    if(s.trim() === ""){
+        document.getElementById("msg").innerText = "Lütfen bir şarkı yaz";
+    }else{
+        document.getElementById("msg").innerText = "İsteğin alındı: " + s;
+        document.getElementById("song").value = "";
+    }
+}
+</script>
+
 </body>
 </html>
