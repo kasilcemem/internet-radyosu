@@ -3,147 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Canlı İnternet Radyosu</title>
-
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
-}
-
-body{
-background:linear-gradient(135deg,#111,#1e1e1e,#2a2a2a);
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
-}
-
-.player{
-width:380px;
-background:#181818;
-padding:30px;
-border-radius:25px;
-box-shadow:0 0 30px rgba(0,0,0,0.5);
-text-align:center;
-}
-
-.logo{
-font-size:28px;
-font-weight:bold;
-margin-bottom:10px;
-color:#00ffae;
-}
-
-.station{
-font-size:18px;
-margin-bottom:20px;
-color:#ccc;
-}
-
-.cover{
-width:180px;
-height:180px;
-margin:auto;
-border-radius:20px;
-background:url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=500') center/cover;
-margin-bottom:25px;
-box-shadow:0 0 20px rgba(0,255,174,0.3);
-animation:spin 10s linear infinite;
-animation-play-state: paused;
-}
-
-.playing{
-animation-play-state: running;
-}
-
-@keyframes spin{
-from{transform:rotate(0deg);}
-to{transform:rotate(360deg);}
-}
-
-.controls button{
-background:#00ffae;
-border:none;
-padding:14px 25px;
-margin:5px;
-border-radius:50px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-transition:0.3s;
-}
-
-.controls button:hover{
-transform:scale(1.08);
-}
-
-.volume{
-margin-top:20px;
-}
-
-input[type=range]{
-width:100%;
-}
-
-.footer{
-margin-top:15px;
-font-size:13px;
-color:#777;
-}
-</style>
+<title>Radyo Plus</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="player">
+<header>
+    <h1>🎙️ Radyo Plus</h1>
+    <p>7/24 Kesintisiz Müzik Yayını</p>
+</header>
 
-<div class="logo">🎵 Müzikist Radyo</div>
-<div class="station">Canlı Yayın</div>
+<section class="player">
+    <h2>Canlı Yayın</h2>
+    <audio controls autoplay>
+        <source src="https://stream.zeno.fm/example" type="audio/mpeg">
+        Tarayıcınız desteklemiyor.
+    </audio>
+</section>
 
-<div class="cover" id="cover"></div>
+<section class="program">
+    <h2>Yayın Akışı</h2>
+    <ul>
+        <li>08:00 Sabah Keyfi</li>
+        <li>12:00 Hit Müzikler</li>
+        <li>18:00 Akşam Drive Time</li>
+        <li>22:00 Slow Night</li>
+    </ul>
+</section>
 
-<audio id="radio" preload="none">
-<source src="https://stream.live.vc.bbcmedia.co.uk/bbc_radio_one" type="audio/mpeg">
-</audio>
+<section class="request">
+    <h2>İstek Parça</h2>
+    <input type="text" placeholder="Şarkı isteğiniz">
+    <button onclick="sendRequest()">Gönder</button>
+</section>
 
-<div class="controls">
-<button onclick="playRadio()">▶ Oynat</button>
-<button onclick="stopRadio()">⏹ Durdur</button>
-</div>
+<footer>
+    <p>© 2026 Radyo Plus</p>
+</footer>
 
-<div class="volume">
-<input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume(this.value)">
-</div>
-
-<div class="footer">
-Ücretsiz Profesyonel İnternet Radyosu
-</div>
-
-</div>
-
-<script>
-const radio = document.getElementById("radio");
-const cover = document.getElementById("cover");
-
-function playRadio(){
-radio.play();
-cover.classList.add("playing");
-}
-
-function stopRadio(){
-radio.pause();
-radio.load();
-cover.classList.remove("playing");
-}
-
-function setVolume(val){
-radio.volume = val;
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
