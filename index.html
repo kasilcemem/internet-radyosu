@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KAŞ FM ULTRA</title>
+<title>KAŞ FM</title>
 
 <style>
 body{
@@ -14,45 +14,37 @@ body{
     text-align:center;
 }
 
-/* HEADER */
 header{
     background:linear-gradient(90deg,#ffb300,#ff6f00);
-    padding:30px 10px;
+    padding:25px;
 }
 
-/* LOGO */
 .logo{
-    width:130px;
+    width:120px;
 }
 
-/* TITLE */
 h1{
     margin:10px 0 0;
-    font-size:40px;
 }
 
-/* PLAYER */
 .player{
     margin:30px auto;
     width:90%;
-    max-width:550px;
-    background:#1a1a1a;
-    padding:25px;
-    border-radius:18px;
-    box-shadow:0 0 25px rgba(255,255,255,0.1);
+    max-width:500px;
+    background:#1c1c1c;
+    padding:20px;
+    border-radius:15px;
 }
 
 audio{
     width:100%;
-    margin-top:10px;
 }
 
-/* BUTTON */
 button{
-    margin-top:15px;
-    padding:12px 18px;
+    margin-top:10px;
+    padding:10px 15px;
     border:none;
-    border-radius:10px;
+    border-radius:8px;
     background:#ffb300;
     font-weight:bold;
     cursor:pointer;
@@ -62,18 +54,11 @@ button:hover{
     background:#ff6f00;
 }
 
-/* INFO */
-.info{
-    font-size:13px;
-    color:#aaa;
-    margin-top:10px;
-}
-
 footer{
     margin-top:40px;
     padding:20px;
     background:#000;
-    font-size:13px;
+    font-size:12px;
 }
 </style>
 </head>
@@ -82,65 +67,42 @@ footer{
 
 <header>
 
-<!-- KAŞ ULTRA LOGO -->
+<!-- KAŞ LOGO -->
 <svg class="logo" viewBox="0 0 200 200">
 <circle cx="100" cy="100" r="90" fill="#ffb300"/>
 <text x="100" y="95" text-anchor="middle" font-size="48" fill="black">KAŞ</text>
 <text x="100" y="140" text-anchor="middle" font-size="32" fill="black">FM</text>
 </svg>
 
-<h1>KAŞ FM ULTRA</h1>
-<p>Profesyonel Canlı Radyo Sistemi</p>
+<h1>KAŞ FM</h1>
+<p>7/24 Canlı Yayın</p>
 
 </header>
 
-<!-- PLAYER -->
 <div class="player">
 
-<h2>🎧 Canlı Yayın</h2>
+<h2>🎧 Şu an çalıyor</h2>
 
-<audio id="radio" controls>
-<!-- 1. ana stream -->
+<audio id="radio" controls autoplay>
+<!-- %100 ÇALIŞAN PUBLIC RADYO STREAM -->
 <source src="https://icecast.radiofrance.fr/fip-hifi.aac" type="audio/mpeg">
 </audio>
 
-<button onclick="startRadio()">▶ Yayını Başlat</button>
+<br>
 
-<div class="info">
-Eğer yayın başlamazsa otomatik alternatif kanal açılır
-</div>
+<button onclick="document.getElementById('radio').play()">
+▶ Yayını Başlat
+</button>
+
+<p style="font-size:12px;color:#aaa">
+Otomatik başlamazsa butona bas
+</p>
 
 </div>
 
 <footer>
-© 2026 KAŞ FM ULTRA
+© 2026 KAŞ FM | Live Radio System
 </footer>
-
-<script>
-// Ana yayın
-const mainStream = "https://icecast.radiofrance.fr/fip-hifi.aac";
-
-// Alternatif fallback (bozulursa)
-const backupStream = "https://icecast.radiofrance.fr/fip-bis.aac";
-
-function startRadio(){
-    let audio = document.getElementById("radio");
-
-    audio.src = mainStream;
-
-    audio.play().catch(() => {
-        console.log("Ana stream başarısız, yedek açılıyor");
-        audio.src = backupStream;
-        audio.play();
-    });
-}
-
-// otomatik deneme
-window.onload = () => {
-    let audio = document.getElementById("radio");
-    audio.play().catch(()=>{});
-};
-</script>
 
 </body>
 </html>
