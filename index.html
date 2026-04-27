@@ -9,7 +9,7 @@
 body{
     margin:0;
     font-family:Arial;
-    background:#0d0d0d;
+    background:#0f0f0f;
     color:white;
     text-align:center;
 }
@@ -21,11 +21,6 @@ header{
 
 .logo{
     width:110px;
-    margin-bottom:10px;
-}
-
-h1{
-    margin:0;
 }
 
 .player{
@@ -41,11 +36,14 @@ audio{
     width:100%;
 }
 
-footer{
-    margin-top:40px;
-    padding:20px;
-    background:#000;
-    font-size:13px;
+button{
+    margin-top:10px;
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    background:#ffb300;
+    cursor:pointer;
+    font-weight:bold;
 }
 </style>
 </head>
@@ -53,7 +51,7 @@ footer{
 <body>
 
 <header>
-<!-- KAŞ LOGO -->
+
 <svg class="logo" viewBox="0 0 200 200">
 <circle cx="100" cy="100" r="90" fill="#ffb300"/>
 <text x="100" y="95" text-anchor="middle" font-size="48" fill="black">KAŞ</text>
@@ -61,23 +59,29 @@ footer{
 </svg>
 
 <h1>KAŞ FM</h1>
-<p>7/24 Canlı Yayın</p>
+<p>Canlı Yayın</p>
+
 </header>
 
 <div class="player">
-<h2>🎧 Canlı Dinle</h2>
 
-<audio controls autoplay>
-<source src="https://stream.zeno.fm/YAYIN_LINKINI_BURAYA_YAZ" type="audio/mpeg">
+<h2>🎧 Şu an yayında</h2>
+
+<audio id="radio" controls autoplay muted>
+<!-- ÜCRETSİZ CANLI RADYO STREAM -->
+<source src="https://icecast.radiofrance.fr/fip-hifi.aac" type="audio/mpeg">
 Tarayıcı desteklemiyor.
 </audio>
 
-<p>Yayın açılmıyorsa linki kontrol et</p>
-</div>
+<br>
 
-<footer>
-© 2026 KAŞ FM
-</footer>
+<button onclick="document.getElementById('radio').play()">
+▶ Yayını Başlat
+</button>
+
+<p>Not: Bazı tarayıcılar otomatik sesi engeller, butona bas</p>
+
+</div>
 
 </body>
 </html>
