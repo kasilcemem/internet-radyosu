@@ -3,47 +3,86 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KAŞ FM</title>
+<title>KAŞ FM PRO</title>
 
 <style>
 body{
     margin:0;
     font-family:Arial;
-    background:#0f0f0f;
+    background:#0b0b0b;
     color:white;
     text-align:center;
 }
 
+/* HEADER */
 header{
     background:linear-gradient(90deg,#ffb300,#ff6f00);
     padding:25px;
 }
 
+/* LOGO */
 .logo{
-    width:110px;
+    width:120px;
+    margin-bottom:10px;
 }
 
+/* TITLE */
+h1{
+    margin:5px 0;
+    font-size:38px;
+}
+
+/* PLAYER */
 .player{
-    margin:40px auto;
+    margin:30px auto;
     width:90%;
-    max-width:500px;
+    max-width:520px;
     background:#1c1c1c;
     padding:20px;
     border-radius:15px;
+    box-shadow:0 0 20px rgba(255,255,255,0.1);
 }
 
 audio{
     width:100%;
 }
 
+/* BOX */
+.box{
+    margin:20px auto;
+    width:90%;
+    max-width:520px;
+    background:#141414;
+    padding:20px;
+    border-radius:15px;
+}
+
+/* INPUT */
+input{
+    width:65%;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+}
+
 button{
-    margin-top:10px;
     padding:10px 15px;
     border:none;
     border-radius:8px;
     background:#ffb300;
     cursor:pointer;
     font-weight:bold;
+}
+
+button:hover{
+    background:#ff6f00;
+}
+
+footer{
+    margin-top:40px;
+    padding:20px;
+    background:#000;
+    font-size:13px;
 }
 </style>
 </head>
@@ -52,36 +91,71 @@ button{
 
 <header>
 
+<!-- KAŞ FM LOGO -->
 <svg class="logo" viewBox="0 0 200 200">
 <circle cx="100" cy="100" r="90" fill="#ffb300"/>
 <text x="100" y="95" text-anchor="middle" font-size="48" fill="black">KAŞ</text>
 <text x="100" y="140" text-anchor="middle" font-size="32" fill="black">FM</text>
 </svg>
 
-<h1>KAŞ FM</h1>
-<p>Canlı Yayın</p>
+<h1>KAŞ FM PRO</h1>
+<p>7/24 Profesyonel Radyo Yayını</p>
 
 </header>
 
+<!-- RADYO PLAYER -->
 <div class="player">
 
-<h2>🎧 Şu an yayında</h2>
+<h2>🎧 Canlı Yayın</h2>
 
-<audio id="radio" controls autoplay muted>
-<!-- ÜCRETSİZ CANLI RADYO STREAM -->
+<audio id="radio" controls autoplay>
+<!-- GERÇEK ÇALIŞAN RADYO STREAM -->
 <source src="https://icecast.radiofrance.fr/fip-hifi.aac" type="audio/mpeg">
 Tarayıcı desteklemiyor.
 </audio>
 
-<br>
+<br><br>
 
-<button onclick="document.getElementById('radio').play()">
-▶ Yayını Başlat
-</button>
+<button onclick="playRadio()">▶ Yayını Başlat</button>
 
-<p>Not: Bazı tarayıcılar otomatik sesi engeller, butona bas</p>
+<p style="font-size:12px;color:#aaa">
+Eğer otomatik başlamazsa butona bas
+</p>
 
 </div>
+
+<!-- İSTEK SİSTEMİ -->
+<div class="box">
+
+<h2>🎶 Şarkı İste</h2>
+
+<input type="text" id="song" placeholder="Şarkı yaz...">
+<button onclick="send()">Gönder</button>
+
+<p id="msg"></p>
+
+</div>
+
+<footer>
+© 2026 KAŞ FM PRO | Tüm Hakları Saklıdır
+</footer>
+
+<script>
+function playRadio(){
+    document.getElementById("radio").play();
+}
+
+function send(){
+    let s = document.getElementById("song").value;
+
+    if(s.trim() === ""){
+        document.getElementById("msg").innerText = "Şarkı yazmalısın";
+    }else{
+        document.getElementById("msg").innerText = "İstek alındı: " + s;
+        document.getElementById("song").value = "";
+    }
+}
+</script>
 
 </body>
 </html>
